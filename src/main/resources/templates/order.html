@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-best Order Page</title>
+    <script type="text/javascript" src="js/order.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+    <div>E-best order</div>
+    <div>
+        <table>
+            <colgroup>
+                <col width="30%">
+                <col width="70%">
+            </colgroup>
+            <tr>
+                <td>매매유형</td>
+                <td>
+                    <label for="buy"><input type="radio" id="buy" value="2" name="bnsTpCode" checked="checked"/>매수</label>
+                    <label for="sell"><input type="radio" id="sell" value="1" name="bnsTpCode"/>매도</label>
+                </td>
+            </tr>
+            <tr>
+                <td>종목코드</td>
+                <td><input id="isuNo" name="isuNo" placeholder="예시 : 이베스트 -> 078020"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">KBSTAR 단기통안채 : 196230</td>
+            </tr>
+            <tr>
+                <td>호가</td>
+                <td><input id="ordPrc" name="ordPrc" placeholder="호가"/> 원</td>
+            </tr>
+            <tr>
+                <td>매매 갯수</td>
+                <td><input id="ordQty" name="ordQty" placeholder="갯 수"/> 주</td>
+            </tr>
+            <tr>
+                <td>msg</td>
+                <td><span class="alertMsg" id="alertMsg" readonly="true"></span></td>
+            </tr>
+            <tr>
+                <td colspan="2"><a class="btn-3d green" href="#" onclick="sendOrder();">주문하기</a></td>
+            </tr>
+        </table>
+    </div>
+    <form action="/logout">
+        <button>로그아웃</button>
+    </form>
+</body>
+</html>
