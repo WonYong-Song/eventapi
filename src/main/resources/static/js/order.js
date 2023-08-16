@@ -2,16 +2,22 @@ function sendOrder() {
     var xhr = new XMLHttpRequest();
     var url = "/sendOrder.do";
     var isuNo = document.getElementById('isuNo').value,
-        ordPrc = parseInt(document.getElementById('ordPrc').value),
+        readyBuyPrc = parseInt(document.getElementById('readyBuyPrc').value),
+        buyPrc = parseInt(document.getElementById('buyPrc').value),
+        sellPrc = parseInt(document.getElementById('sellPrc').value),
         ordQty = parseInt(document.getElementById('ordQty').value),
         bnsTpCode = document.querySelector('input[name="bnsTpCode"]:checked').value;
     var data = {
         isuNo: isuNo,
-        ordPrc: ordPrc,
+        readyBuyPrc: readyBuyPrc,
+        buyPrc: buyPrc,
+        sellPrc: sellPrc,
         ordQty: ordQty,
         bnsTpCode: bnsTpCode
     };
-
+    if (data.bnsTpCode == '3') {
+        document.getElementById('alertMsg').innerHTML='처리중입니다.'
+    }
     xhr.onload = function() {
         if (xhr.status >= 200 && xhr.status < 300) {
             // 요청이 성공적으로 완료된 경우

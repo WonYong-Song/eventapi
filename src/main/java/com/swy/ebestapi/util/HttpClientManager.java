@@ -89,39 +89,8 @@ public class HttpClientManager {
         jo.put("OrdCndiTpCode", so.getOrdCndiTpCode());
         
         params.put("CSPAT00601InBlock1", jo);
-        System.out.println(params.toJSONString());
+        // System.out.println(params.toJSONString());
 
-        
-        String paramString = "{\n" + //
-                "  \"CSPAT00601InBlock1\": {\n" + //
-                "    \"RecCnt\": 1,\n" + //
-                "    \"IsuNo\": \""+so.getIsuNo()+"\",\n" + //
-                "    \"OrdQty\": "+so.getOrdQty()+",\n" + //
-                "    \"OrdPrc\": "+so.getOrdPrc()+",\n" + //
-                "    \"BnsTpCode\": \""+so.getBnsTpCode()+"\",\n" + //
-                "    \"OrdprcPtnCode\": \"00\",\n" + //
-                "    \"PrgmOrdprcPtnCode\": \"00\",\n" + //
-                "    \"StslAbleYn\": \"0\",\n" + //
-                "    \"StslOrdprcTpCode\": \"0\",\n" + //
-                "    \"CommdaCode\": \"41\",\n" + //
-                "    \"MgntrnCode\": \""+so.getMgntrnCode()+"\",\n" + //
-                "    \"LoanDt\": \""+so.getLoanDt()+"\",\n" + //
-                "    \"MbrNo\": \"000\",\n" + //
-                "    \"OrdCndiTpCode\": \""+so.getOrdCndiTpCode()+"\",\n" + //
-                "    \"StrtgCode\": \" \",\n" + //
-                "    \"GrpId\": \" \",\n" + //
-                "    \"OrdSeqNo\": 0,\n" + //
-                "    \"PtflNo\": 0,\n" + //
-                "    \"BskNo\": 0,\n" + //
-                "    \"TrchNo\": 0,\n" + //
-                "    \"ItemNo\": 0,\n" + //
-                "    \"OpDrtnNo\": \"0\",\n" + //
-                "    \"LpYn\": \"0\",\n" + //
-                "    \"CvrgTpCode\": \"0\"\n" + //
-                "  }\n" + //
-                "} ";
-        
-        // Map<String,Object> connectionMap = httpConnectOrder(sendOrderUrl, headers, sb.toString());
         Map<String,Object> connectionMap = httpConnectOrder(sendOrderUrl, headers, params);
         if ((int)connectionMap.get("code") != 200) {
             returnMap.put("msg", "통신 중 에러발생 응답코드 : " + (int)connectionMap.get("code"));

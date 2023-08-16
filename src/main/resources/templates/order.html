@@ -20,6 +20,18 @@
                 <td>
                     <label for="buy"><input type="radio" id="buy" value="2" name="bnsTpCode" checked="checked"/>매수</label>
                     <label for="sell"><input type="radio" id="sell" value="1" name="bnsTpCode"/>매도</label>
+                    <label for="repeat"><input type="radio" id="repeat" value="3" name="bnsTpCode"/>반복</label>
+                </td>
+            </tr>
+            <tr>
+                <td>기매수 가격</td>
+                <td><input id="readyBuyPrc" name="readyBuyPrc" placeholder="기매수 호가"/> 원</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    주의 : 반복으로 하실 경우 "기매수"가격부터 매수기준 50억을 초과하지 않는 순간까지 반복합니다.<br/>
+                    입력해 주신 매수,매도 가격을 반복하는 것이기 때문에 변동성이 큰 상품의 경우<br/>
+                    사용에 주의해주세요!(주문이 처리되지 않더라도 중간에 멈추지 않고 계산된 만큼 반복 합니다.)
                 </td>
             </tr>
             <tr>
@@ -30,8 +42,12 @@
                 <td colspan="2">KBSTAR 단기통안채 : 196230</td>
             </tr>
             <tr>
-                <td>호가</td>
-                <td><input id="ordPrc" name="ordPrc" placeholder="호가"/> 원</td>
+                <td>매수 가격</td>
+                <td><input id="buyPrc" name="buyPrc" placeholder="매수 호가"/> 원</td>
+            </tr>
+            <tr>
+                <td>매도 가격</td>
+                <td><input id="sellPrc" name="sellPrc" placeholder="매도 호가"/> 원</td>
             </tr>
             <tr>
                 <td>매매 갯수</td>
