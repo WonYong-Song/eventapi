@@ -59,7 +59,7 @@ public class OrderController {
                         resultMap.put("msg", "가격,주문 수량 등을 확인해주세요");
                         return resultMap;
                     }
-                    while(sumPrc<5000000000L) {
+                    while(sumPrc<500000000L) {
                         try {
                             //매수
                             so.setOrdPrc(so.getBuyPrc());
