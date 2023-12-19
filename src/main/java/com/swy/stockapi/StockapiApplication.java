@@ -1,13 +1,13 @@
-package com.swy.ebestapi;
+package com.swy.stockapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EbestapiApplication {
+public class StockapiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EbestapiApplication.class, args);
+		SpringApplication.run(StockapiApplication.class, args);
 	}
 
 }

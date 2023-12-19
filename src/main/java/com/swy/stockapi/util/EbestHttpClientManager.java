@@ -1,4 +1,4 @@
-package com.swy.ebestapi.util;
+package com.swy.stockapi.util;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -24,15 +24,18 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Component;
 
-import com.swy.ebestapi.login.dto.Login;
-import com.swy.ebestapi.order.dto.SendOrder;
+import com.swy.stockapi.login.dto.Login;
+import com.swy.stockapi.order.dto.SendOrder;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
-public class HttpClientManager {
+public class EbestHttpClientManager {
     String httpDomain = "https://openapi.ebestsec.co.kr:8080";
 
     public boolean tryLogin(Login info) {
-        System.out.println("try login");
+        log.info("try login to ebest");
         Map<String,Object> returnMap = new HashMap<>();
         returnMap.put("result", false);
 
@@ -89,7 +92,6 @@ public class HttpClientManager {
         jo.put("OrdCndiTpCode", so.getOrdCndiTpCode());
         
         params.put("CSPAT00601InBlock1", jo);
-        // System.out.println(params.toJSONString());
 
         Map<String,Object> connectionMap = httpConnectOrder(sendOrderUrl, headers, params);
         if ((int)connectionMap.get("code") != 200) {
@@ -120,7 +122,7 @@ public class HttpClientManager {
             // HttpPost 객체 생성 및 파라미터 설정
             HttpPost httpPost = new HttpPost(uriBuilder.build());
             for (NameValuePair param : params) {
-                System.out.println(param.getName() + " : " + param.getValue());
+                log.debug("ebest Param : " + param.getName() + " : " + param.getValue());
             }
             httpPost.setEntity(new UrlEncodedFormEntity(params));
 
@@ -134,13 +136,13 @@ public class HttpClientManager {
 
             // 응답의 상태 코드 확인 (200이면 성공)
             int statusCode = response.getStatusLine().getStatusCode();
-            System.out.println("Status Code: " + statusCode);
+            log.debug("Status Code: " + statusCode);
             returnMap.put("code", statusCode);
 
             // 응답의 내용을 문자열로 변환하여 출력합니다.
             HttpEntity entity = response.getEntity();
             String responseString = EntityUtils.toString(entity);
-            System.out.println("Response: " + responseString);
+            log.debug("Response: " + responseString);
             returnMap.put("msg", responseString);
 
         } catch (IOException | URISyntaxException e) {
@@ -173,7 +175,7 @@ public class HttpClientManager {
             HttpPost httpPost = new HttpPost(uriBuilder.build());
             // StringEntity stringEntity = new StringEntity(params, ContentType.APPLICATION_JSON);
             StringEntity stringEntity = new StringEntity(params.toJSONString(), ContentType.APPLICATION_JSON);
-            System.out.println(params.toJSONString());
+            log.debug(params.toJSONString());
             httpPost.setEntity(stringEntity);
 
             // Header에 content-type 설정
@@ -186,13 +188,13 @@ public class HttpClientManager {
 
             // 응답의 상태 코드 확인 (200이면 성공)
             int statusCode = response.getStatusLine().getStatusCode();
-            System.out.println("Status Code: " + statusCode);
+            log.debug("Status Code: " + statusCode);
             returnMap.put("code", statusCode);
 
             // 응답의 내용을 문자열로 변환하여 출력합니다.
             HttpEntity entity = response.getEntity();
             String responseString = EntityUtils.toString(entity);
-            System.out.println("Response: " + responseString);
+            log.info("Response: " + responseString);
             returnMap.put("msg", responseString);
 
         } catch (IOException | URISyntaxException e) {

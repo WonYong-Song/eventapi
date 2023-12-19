@@ -1,4 +1,4 @@
-package com.swy.ebestapi.login.dto;
+package com.swy.stockapi.login.dto;
 
 import lombok.Data;
 import lombok.ToString;
@@ -11,4 +11,5 @@ public class Login {
     String secretKey = "";
     String scope = "oob";
     String token = "";
+    String guboon = "";
 }

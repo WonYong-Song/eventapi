@@ -1,20 +1,28 @@
 function sendOrder() {
     var xhr = new XMLHttpRequest();
-    var url = "/sendOrder.do";
-    var isuNo = document.getElementById('isuNo').value,
-        readyBuyPrc = parseInt(document.getElementById('readyBuyPrc').value),
+    
+    const isuNo = document.getElementById('isuNo').value,
+        cano = document.getElementById('cano').value,
+        acntPrdtCd = document.getElementById('acntPrdtCd').value,
+        targetBuyPrc = parseInt(document.getElementById('targetBuyPrc').value),
         buyPrc = parseInt(document.getElementById('buyPrc').value),
         sellPrc = parseInt(document.getElementById('sellPrc').value),
         ordQty = parseInt(document.getElementById('ordQty').value),
-        bnsTpCode = document.querySelector('input[name="bnsTpCode"]:checked').value;
+        bnsTpCode = document.querySelector('input[name="bnsTpCode"]:checked').value,
+        guboon = document.querySelector('$guboon').value
     var data = {
         isuNo: isuNo,
-        readyBuyPrc: readyBuyPrc,
+        cano: cano,
+        acntPrdtCd: acntPrdtCd,
+        targetBuyPrc: targetBuyPrc,
         buyPrc: buyPrc,
         sellPrc: sellPrc,
         ordQty: ordQty,
         bnsTpCode: bnsTpCode
+
     };
+    const url = "/" + guboon + "/sendOrder.do";
+
     if (data.bnsTpCode == '3') {
         document.getElementById('alertMsg').innerHTML='처리중입니다.'
     }

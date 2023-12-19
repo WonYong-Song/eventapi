@@ -1,39 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Best Login Page</title>
-    <link rel="stylesheet" href="css/common.css">
+    <title>Stock Login Page</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <script type="text/javascript" src="/js/login.js"></script>
 </head>
 
 <body>
-    <div>E-best Login</div>
-    <form action="/login" method="post">
-        <table>
-            <colgroup>
-                <col width="30%">
-                <col width="70%">
-            </colgroup>
-            <tr>
-                <th colspan="2">정보를 입력해주세요</th>
-            </tr>
-            <tr>
-                <td>앱키</td>
-                <td><input id="appKey" name="appKey" placeholder="앱키" th:value="${info.appKey}"/></td>
-            </tr>
-            <tr>
-                <td>시크릿키</td>
-                <td><input id="secretKey" name="secretKey" placeholder="시크릿키" th:value="${info.secretKey}"/></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button>로그인</button></td>
-            </tr>
-            <tr>
-                <td colspan="2"> <span class="alertMsg" readonly="true" th:text="${msg}"></span></td>
-            </tr>
-        </table>
-    </form>
+    <div>Stock Login</div>
+    <table>
+        <colgroup>
+            <col width="30%">
+            <col width="70%">
+        </colgroup>
+        <tr>
+            <th colspan="2">정보를 입력해주세요</th>
+        </tr>
+        <tr>
+            <td>증권사</td>
+            <td>
+                <input type="radio" id="ebest" name="securitiesCompany" value="ebest" checked/><label for="ebest">이베스트</label>
+                <input type="radio" id="hantoo" name="securitiesCompany" value="hantoo"/><label for="hantoo">한국투자</label>
+            </td>
+        </tr>
+        <tr>
+            <td>앱키</td>
+            <td><input id="appKey" name="appKey" placeholder="앱키" value=""/></td>
+        </tr>
+        <tr>
+            <td>시크릿키</td>
+            <td><input id="secretKey" name="secretKey" placeholder="시크릿키" value=""/></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button onclick="login();">로그인</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"> <span class="alertMsg" readonly="true" th:text="${msg}"></span></td>
+        </tr>
+    </table>
     
 </body>
 </html>

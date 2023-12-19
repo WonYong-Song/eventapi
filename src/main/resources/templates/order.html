@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-best Order Page</title>
-    <script type="text/javascript" src="js/order.js"></script>
-    <link rel="stylesheet" href="css/common.css">
+    <script type="text/javascript" src="/js/order.js"></script>
+    <link rel="stylesheet" href="/css/common.css">
 </head>
 <body>
     <div>E-best order</div>
@@ -23,15 +23,22 @@
                     <label for="repeat"><input type="radio" id="repeat" value="3" name="bnsTpCode"/>반복</label>
                 </td>
             </tr>
+            <tr th:if="{guboon == 'hantoo'}">
+                <td>계좌정보</td>
+                <td>
+                    <input id="cano" name="cano" value="" placeholder="계좌 앞8자리"/>
+                    -
+                    <input id="acntPrdtCd" name="acntPrdtCd" value="01"/>
+                </td>
+            </td>
             <tr>
-                <td>기매수 가격</td>
-                <td><input id="readyBuyPrc" name="readyBuyPrc" placeholder="기매수 호가"/> 원</td>
+                <td>매수 목표 가격</td>
+                <td><input id="targetBuyPrc" name="targetBuyPrc" placeholder="기매수 호가" value="500000000"/> 원</td>
             </tr>
             <tr>
                 <td colspan="2">
-                    주의 : 반복으로 하실 경우 "기매수"가격부터 매수기준 5억을 초과하지 않는 순간까지 반복합니다.<br/>
-                    입력해 주신 매수,매도 가격을 반복하는 것이기 때문에 변동성이 큰 상품의 경우<br/>
-                    사용에 주의해주세요!(주문이 처리되지 않더라도 중간에 멈추지 않고 계산된 만큼 반복 합니다.)
+                    주의 : 반복으로 하실 경우 매 목표 가격을 넘는 만큼 매수 * 갯수 금액으로 반복합니다.<br/>
+                    변동성이 큰 상품의 경우 사용에 주의해주세요!<br/>
                 </td>
             </tr>
             <tr>
@@ -61,6 +68,9 @@
                 <td colspan="2"><a class="btn-3d green" href="#" onclick="sendOrder();">주문하기</a></td>
             </tr>
         </table>
+        <div>
+            <input type="hidden" th:value="{guboon}"/>
+        </div>
     </div>
     <form action="/logout">
         <button>로그아웃</button>
