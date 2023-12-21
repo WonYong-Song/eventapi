@@ -27,13 +27,12 @@ public class LoginServiceImpl implements LoginService{
         } else if (info.getGuboon().equals("hantoo")) {
             loginResult = hhcm.tryLogin(info);
         }
-        if (loginResult) {
-            log.debug("login success, token : " +info.getToken());
-            sm.createSession(info, res);
-            return true;
-        } else {
+        if (!loginResult) {
             return false;
         }
+        log.debug("login success, token : " +info.getToken());
+        sm.createSession(info, res);
+        return true;
     }
     
 }

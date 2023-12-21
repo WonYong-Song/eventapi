@@ -23,7 +23,7 @@
                     <label for="repeat"><input type="radio" id="repeat" value="3" name="bnsTpCode"/>반복</label>
                 </td>
             </tr>
-            <tr th:if="{guboon == 'hantoo'}">
+            <tr th:style="${guboon == 'hantoo' ? '' : 'display:none'}">
                 <td>계좌정보</td>
                 <td>
                     <input id="cano" name="cano" value="" placeholder="계좌 앞8자리"/>
@@ -46,9 +46,6 @@
                 <td><input id="isuNo" name="isuNo" placeholder="예시 : 이베스트 -> 078020" value="459580"/></td>
             </tr>
             <tr>
-                <td colspan="2">KBSTAR 단기통안채 : 196230</td>
-            </tr>
-            <tr>
                 <td>매수 가격</td>
                 <td><input id="buyPrc" name="buyPrc" placeholder="매수 호가"/> 원</td>
             </tr>
@@ -69,7 +66,7 @@
             </tr>
         </table>
         <div>
-            <input type="hidden" th:value="{guboon}"/>
+            <input type="hidden" id="guboon" name="guboon" th:value="${guboon}"/>
         </div>
     </div>
     <form action="/logout">

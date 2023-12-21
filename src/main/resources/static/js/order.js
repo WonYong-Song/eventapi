@@ -9,7 +9,7 @@ function sendOrder() {
         sellPrc = parseInt(document.getElementById('sellPrc').value),
         ordQty = parseInt(document.getElementById('ordQty').value),
         bnsTpCode = document.querySelector('input[name="bnsTpCode"]:checked').value,
-        guboon = document.querySelector('$guboon').value
+        guboon = document.querySelector('#guboon').value
     var data = {
         isuNo: isuNo,
         cano: cano,
@@ -19,7 +19,6 @@ function sendOrder() {
         sellPrc: sellPrc,
         ordQty: ordQty,
         bnsTpCode: bnsTpCode
-
     };
     const url = "/" + guboon + "/sendOrder.do";
 

@@ -92,11 +92,11 @@ public class OverSeaOrderController {
         return resultMap;
     }
 
-    @RequestMapping()
-    public ModelAndView overseaOrderView() {
-        ModelAndView mav = new ModelAndView();
+    // @RequestMapping()
+    // public ModelAndView overseaOrderView() {
+    //     ModelAndView mav = new ModelAndView();
 
-        mav.setViewName("overseaOrder");
-        return mav;
-    }
+    //     mav.setViewName("overseaOrder");
+    //     return mav;
+    // }
 }

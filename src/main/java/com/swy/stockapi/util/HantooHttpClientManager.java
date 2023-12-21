@@ -33,6 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component
 public class HantooHttpClientManager {
+    
     String httpDomain = "https://openapi.koreainvestment.com:9443";
 
     public boolean tryLogin(Login info) {
@@ -84,8 +85,8 @@ public class HantooHttpClientManager {
         jo.put("ACNT_PRDT_CD", so.getAcntPrdtCd());
         jo.put("PDNO", so.getIsuNo());
         jo.put("ORD_DVSN", so.getOrdprcPtnCode());
-        jo.put("ORD_QTY", so.getOrdQty());
-        jo.put("ORD_UNPR", so.getOrdPrc());
+        jo.put("ORD_QTY", String.valueOf(so.getOrdQty()));
+        jo.put("ORD_UNPR", String.valueOf(so.getOrdPrc()));
 
         Map<String,Object> connectionMap = httpConnectOrder(sendOrderUrl, headers, jo);
         if ((int)connectionMap.get("code") != 200) {

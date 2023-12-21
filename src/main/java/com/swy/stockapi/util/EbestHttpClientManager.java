@@ -32,6 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Component
 public class EbestHttpClientManager {
+    
     String httpDomain = "https://openapi.ebestsec.co.kr:8080";
 
     public boolean tryLogin(Login info) {
