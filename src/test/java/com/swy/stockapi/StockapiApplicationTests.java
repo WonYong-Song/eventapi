@@ -1,10 +1,10 @@
-package com.swy.ebestapi;
+package com.swy.stockapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EbestapiApplicationTests {
+class StockapiApplicationTests {
 
 	@Test
 	void contextLoads() {
